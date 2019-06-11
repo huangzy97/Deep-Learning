@@ -1,5 +1,9 @@
 # Deep-Learning
 深度学习
+# part Ⅰ
+# ANN
+人工神经网络
+# part Ⅱ
 # CNN
 *卷积神经网络*  
 *TensorFlow*  
