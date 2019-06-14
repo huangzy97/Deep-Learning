@@ -44,7 +44,7 @@ from sklearn.naive_bayes import GaussianNB
 classifier = GaussianNB()
 classifier.fit(X_train, y_train)
 
-# 预测训练集
+# 预测测试集
 y_pred = classifier.predict(X_test)
 
 # 生成混淆矩阵
