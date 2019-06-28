@@ -53,7 +53,12 @@ classifier.compile(optimizer = 'adam',loss = 'binary_crossentropy',metrics = ['a
 # batch_size=10表示10个训练数据一组一个损失和改变一次W，epochs=50,训练50次
 # =============================================================================
 classifier.fit(X_train,y_train,batch_size = 5,epochs = 100)
-
+########保存模型
+import dill as pickle
+model = classifier
+filename = 'model_v1.pk'
+with open(r'D:/dm/ANN/model/'+filename, 'wb') as file:
+	pickle.dump(model, file)
 ######第三步#####预测和模型评估 
 # 预测
 y_pred = classifier.predict(X_test)
