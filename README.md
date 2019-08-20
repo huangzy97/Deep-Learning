@@ -28,5 +28,4 @@ ANN(Artificial Neural Network),人工神经网络学习过程：
 # part Ⅳ 图像识别  
 分别采用了[DNN](https://github.com/huangzy97/Deep-Learning/blob/master/mnist_keras_DNN) 和[CNN](https://github.com/huangzy97/Deep-Learning/blob/master/mnist_keras_cnn) 对手写数字图片做了训练。两种训练结果的得分相近，CNN在测试数据集的score为0.9901，DNN在测试数据集的score为0.9818，但是其预测结果相差很大，结果如下：  
 ![原图](https://github.com/huangzy97/lib/blob/master/3.png)   
-![DNN预测结果](https://github.com/huangzy97/lib/blob/master/DNN%E9%A2%84%E6%B5%8B%E7%BB%93%E6%9E%9C.png)     
-![CNN预测结果](https://github.com/huangzy97/lib/blob/master/CNN%E9%A2%84%E6%B5%8B%E7%BB%93%E6%9E%9C.png)   
+![DNN预测结果](https://github.com/huangzy97/lib/blob/master/DNN%E9%A2%84%E6%B5%8B%E7%BB%93%E6%9E%9C.png)![CNN预测结果](https://github.com/huangzy97/lib/blob/master/CNN%E9%A2%84%E6%B5%8B%E7%BB%93%E6%9E%9C.png)   
