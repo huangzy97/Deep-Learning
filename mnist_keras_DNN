@@ -1,0 +1,64 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Aug 20 20:31:18 2019
+
+@author: sbtithzy
+"""
+from __future__ import print_function
+import numpy as np
+np.random.seed(42) 
+
+from keras.datasets import mnist
+from keras.models import Sequential
+from keras.layers.core import Dense, Dropout, Activation
+from keras.optimizers import RMSprop
+from keras.utils import np_utils
+import cv2
+
+batch_size = 100
+nb_classes = 10
+nb_epoch = 10
+
+# load data
+(X_train, y_train), (X_test, y_test) = mnist.load_data()
+
+# flatten
+X_train = X_train.reshape(60000, 784)
+X_test = X_test.reshape(10000, 784)
+X_train = X_train.astype('float32')
+X_test = X_test.astype('float32')
+# 归一化到0-1
+X_train /= 255
+X_test /= 255
+print(X_train.shape[0], 'train samples')
+print(X_test.shape[0], 'test samples')
+
+Y_train = np_utils.to_categorical(y_train, nb_classes)
+Y_test = np_utils.to_categorical(y_test, nb_classes)
+
+# Dense层:即全连接层
+# keras.layers.core.Dense(output_dim, init='glorot_uniform', activation='linear', weights=None, W_regularizer=None, b_regularizer=None, activity_regularizer=None, W_constraint=None, b_constraint=None, bias=True, input_dim=None)
+model = Sequential()
+model.add(Dense(688, input_shape=(784,),activation='relu'))
+#model.add(Dropout(0.2))
+model.add(Dense(688, activation = 'relu'))
+model.add(Dense(688, activation = 'relu'))
+model.add(Dense(688, activation = 'relu'))
+#model.add(Dropout(0.2))
+model.add(Dense(10,activation = 'softmax'))
+
+model.compile(loss='categorical_crossentropy',optimizer='adam',metrics=['accuracy'])
+
+history = model.fit(X_train, Y_train,
+                    batch_size=batch_size, nb_epoch=nb_epoch,
+                    verbose=1, validation_data=(X_test, Y_test))
+score = model.evaluate(X_test, Y_test, verbose=0)
+print('Test score:', score[0])
+print('Test accuracy:', score[1])
+####图像预测
+kk = cv2.imread('31.png')
+# 转灰度图像
+kk = cv2.cvtColor(kk,cv2.COLOR_RGB2GRAY)
+kk = kk.reshape(1,28*28)
+kk = kk/255 
+result = model.predict(kk)
