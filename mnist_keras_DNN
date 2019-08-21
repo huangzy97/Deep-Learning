@@ -59,6 +59,7 @@ print('Test accuracy:', score[1])
 kk = cv2.imread('31.png')
 # 转灰度图像
 kk = cv2.cvtColor(kk,cv2.COLOR_RGB2GRAY)
-kk = kk.reshape(1,28*28)
+kk = abs(kk-255)####像素点转换
 kk = kk/255 
+kk = kk.reshape(1,28*28)
 result = model.predict(kk)
